@@ -1,0 +1,36 @@
+###########
+# GLOBAL OPTIONS (should work on any system anywhere)
+###########
+export CLICOLOR=1
+export GREP_OPTIONS='--color=auto'
+set -o vi
+
+###########
+# For mac
+###########
+
+alias vim='mvim -v' #default vim is missing nifty features like ruby support
+alias tmux='tmux -2'
+
+####
+## PATH MODIFICATIONS
+#####
+
+#other
+export PATH="~/bin:$PATH"
+
+#pypi installed stuff
+export PATH="/opt/local/Library/Frameworks/Python.framework/Versions/2.6/bin:$PATH"
+
+#brew
+export PATH="/usr/local/bin:$PATH"
+
+##########
+# Bash completion
+##########
+if [ -f /opt/local/etc/bash_completion ]; then
+    . /opt/local/etc/bash_completion
+    source ~/config/.git-completion.bash
+fi
+
+
