@@ -1,9 +1,16 @@
 """"""""""""""""" "Leah's vimrc "June 16th, 2011 """""""""""""""""
 "General
 
+"virtualedit
+set virtualedit=all
+
+set showmode
+
+"use  per-directory exuberant ctags
+set tags=tags;/
+
 "current buffer can be put to background without writing to disk 
 "marks and undos are remembered when a background process is foregrounded 
-
 set hidden
 
 "no pinky jumps (default leader is \) 
@@ -24,24 +31,13 @@ set grepprg=ack
 
 "General aesthetics
 
-if has ("gui_running")
-	set guifont=Monaco:h18
-endif
-
-set t_Co=256 
-color xoria256
+set background=light
+set guifont=Monaco:h18
+"set t_Co=256 
+color solarized
 
 set number 
 syntax enable
-
-"Indentation 
-set smartindent 
-set autoindent 
-set tabstop=4 
-set expandtab 
-set shiftwidth=4 
-set softtabstop=4 
-set backspace=indent,eol,start
 
 "WOOOOOO, PUNCH CARDS
 "annoying, breaks python - 06/29/2011
@@ -51,8 +47,6 @@ set wrap linebreak textwidth=0
 
 "Omnicompletion
 set ofu=syntaxcomplete#Complete
-
-filetype indent on
 
 "Informative status line(copied) 
 set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\ [%l/%L\ (%p%%)] 
@@ -65,6 +59,7 @@ set laststatus=2
 
 "Plugins 
 filetype plugin on
+filetype indent on
 
 "Python 
 let python_highlight_builtin = 1
@@ -78,4 +73,8 @@ call pathogen#runtime_append_all_bundles("vimpyre")
 
 "Taglist 
 nnoremap <silent> <F8> :TlistToggle<CR>
-nnoremap <silent> <F1> :NERDTreeToggle<CR>
+nnoremap <silent> <F2> :NERDTreeToggle<CR>
+
+"Buffer Navigation
+nnoremap <silent> <F12> :bn<CR>
+nnoremap <silent> <S-F12> :bp<CR>
