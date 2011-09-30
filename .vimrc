@@ -31,9 +31,8 @@ set grepprg=ack
 
 "General aesthetics
 
-set background=light
+set background=dark	
 set guifont=Monaco:h18
-"set t_Co=256 
 color solarized
 
 set number 
@@ -49,7 +48,8 @@ set wrap linebreak textwidth=0
 set ofu=syntaxcomplete#Complete
 
 "Informative status line(copied) 
-set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\ [%l/%L\ (%p%%)] 
+"from Derek Wyatt's blog
+set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
 set laststatus=2
 
 "Spellchecking 
@@ -62,7 +62,7 @@ filetype plugin on
 filetype indent on
 
 "Python 
-let python_highlight_builtin = 1
+"let python_highlight_builtin = 1
 
 "LaTeX 
 set grepprg=grep\ -nH\ $* 
@@ -72,7 +72,7 @@ let g:tex_flavor='latex'
 call pathogen#runtime_append_all_bundles("vimpyre")
 
 "Taglist 
-nnoremap <silent> <F8> :TlistToggle<CR>
+nnoremap <silent> <F8> :TagbarToggle<CR>
 nnoremap <silent> <F2> :NERDTreeToggle<CR>
 
 "Buffer Navigation
