@@ -30,7 +30,6 @@ export PATH="/opt/local/Library/Frameworks/Python.framework/Versions/2.6/bin:$PA
 #############
 export ADKU_HOME="/code/git/Adku" 
 export EMR_EMAIL_USER="leah"
-alias fab="fab-2.6"
 _fabric()
 {
     local cur prev
@@ -79,3 +78,7 @@ fi
 #############
 PS1="\w\$(__git_ps1)\$ "
 
+############
+# xcode 4 bug
+############
+export ARCHFLAGS='-arch i386 -arch x86_64'
