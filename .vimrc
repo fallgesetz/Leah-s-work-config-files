@@ -1,7 +1,11 @@
 """"""""""""""""" "Leah's vimrc "June 16th, 2011 """""""""""""""""
 "General
 
+"yy p D P works with system clipboard
+set clipboard=unnamed
+
 "virtualedit
+"cursor doesn't just snap to text
 set virtualedit=all
 
 set showmode
