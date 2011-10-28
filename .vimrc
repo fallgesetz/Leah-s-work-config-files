@@ -1,4 +1,4 @@
-""""""""""""""""" "Leah's vimrc "June 16th, 2011 """""""""""""""""
+""""""""""""""""" "Leah's vimrc "October 16th, 2011 """""""""""""""""
 "General
 
 "yy p D P works with system clipboard
@@ -27,7 +27,7 @@ set wildmode=list:longest
 set title
 
 "search options 
-"set hlsearch 
+set hlsearch 
 set incsearch
 
 "ack is prettier
@@ -37,7 +37,6 @@ set grepprg=ack
 
 set background=dark	
 set guifont=Monaco:h18
-color solarized
 
 set number 
 syntax enable
@@ -75,10 +74,50 @@ let g:tex_flavor='latex'
 "Package Management 
 call pathogen#runtime_append_all_bundles("vimpyre")
 
-"Taglist 
+" Solarized
+" keep this after pathogen, because solarized requires pathogen
+color solarized
+
+""""""""""""
+" MAPPINGS "
+""""""""""""
+
+"arrow keys - don't cheat
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+"makes highlight search much less annoying
+nnoremap <silent> <F3> :set hlsearch!<CR>
+
+"Tagbar
 nnoremap <silent> <F8> :TagbarToggle<CR>
+
+"NERDTree
 nnoremap <silent> <F2> :NERDTreeToggle<CR>
 
-"Buffer Navigation
-nnoremap <silent> <F12> :bn<CR>
-nnoremap <silent> <S-F12> :bp<CR>
+"vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+"esc
+inoremap jj <esc>
+
+""""""""""""""""""""
+" FILETYPE COMMANDS"
+""""""""""""""""""""
+
+augroup indent_rules
+    "clear autocmds in group on reload
+    autocmd! 
+    autocmd FileType python setlocal noai tabstop=4 expandtab shiftwidth=4 backspace=indent
+    autocmd Filetype c setlocal tabstop=4 shiftwidth=4 expandtab cindent
+augroup END
+
+
