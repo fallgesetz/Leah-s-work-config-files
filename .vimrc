@@ -80,6 +80,9 @@ call pathogen#runtime_append_all_bundles("vimpyre")
 " keep this after pathogen, because solarized requires pathogen
 color solarized
 
+"Vim-LaTeX
+let g:Tex_DefaultTargetFormat='pdf'
+
 """"""""""""
 " MAPPINGS "
 """"""""""""
