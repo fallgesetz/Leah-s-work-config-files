@@ -2,7 +2,8 @@
 "General
 
 "yy p D P works with system clipboard
-set clipboard=unnamed
+"doesn't really work
+"set clipboard=unnamed
 
 "virtualedit
 "cursor doesn't just snap to text
@@ -37,6 +38,7 @@ set grepprg=ack
 
 set background=dark	
 set guifont=Monaco:h18
+let g:solarized_termcolors=16
 
 set number 
 syntax enable
@@ -97,6 +99,12 @@ inoremap <right> <nop>
 nnoremap <silent> <F3> :set hlsearch!<CR>
 
 "Tagbar
+=======
+"""""
+" mappings
+""""""
+
+"Taglist 
 nnoremap <silent> <F8> :TagbarToggle<CR>
 
 "NERDTree
@@ -108,6 +116,11 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 "esc
 inoremap jj <esc>
+
+=======
+"Buffer Navigation
+nnoremap <silent> <F12> :bn<CR>
+nnoremap <silent> <S-F12> :bp<CR>
 
 """"""""""""""""""""
 " FILETYPE COMMANDS"
