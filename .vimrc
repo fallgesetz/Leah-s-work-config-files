@@ -1,9 +1,8 @@
 """"""""""""""""" "Leah's vimrc "October 16th, 2011 """""""""""""""""
 "General
-
-"yy p D P works with system clipboard
-"doesn't really work
-"set clipboard=unnamed
+"
+vmap <C-c> y:call system("pbcopy", getreg("\""))<CR>
+nmap <C-v> :call setreg("\"",system("pbpaste"))<CR>p
 
 "virtualedit
 "cursor doesn't just snap to text
@@ -82,6 +81,7 @@ color solarized
 
 "Vim-LaTeX
 let g:Tex_DefaultTargetFormat='pdf'
+let g:Tex_ViewRule_pdf='open -a Preview'
 
 """"""""""""
 " MAPPINGS "
@@ -132,7 +132,7 @@ nnoremap <silent> <S-F12> :bp<CR>
 augroup indent_rules
     "clear autocmds in group on reload
     autocmd! 
-    autocmd FileType python setlocal noai tabstop=4 expandtab shiftwidth=4 backspace=indent
+    autocmd FileType python setlocal ai tabstop=4 expandtab shiftwidth=4 backspace=indent
     autocmd Filetype c setlocal tabstop=4 shiftwidth=4 expandtab cindent
 augroup END
 
