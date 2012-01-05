@@ -98,13 +98,7 @@ inoremap <right> <nop>
 "makes highlight search much less annoying
 nnoremap <silent> <F3> :set hlsearch!<CR>
 
-"Tagbar
-=======
-"""""
-" mappings
-""""""
-
-"Taglist 
+"Tagbar 
 nnoremap <silent> <F8> :TagbarToggle<CR>
 
 "NERDTree
@@ -117,7 +111,6 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 "esc
 inoremap jj <esc>
 
-=======
 "Buffer Navigation
 nnoremap <silent> <F12> :bn<CR>
 nnoremap <silent> <S-F12> :bp<CR>
@@ -130,7 +123,8 @@ augroup indent_rules
     "clear autocmds in group on reload
     autocmd! 
     autocmd FileType python setlocal noai tabstop=4 expandtab shiftwidth=4 backspace=indent
-    autocmd Filetype c setlocal tabstop=4 shiftwidth=4 expandtab cindent
+    autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab cindent
+    autocmd FileType ocaml setlocal sw=2 noai
 augroup END
 
 
