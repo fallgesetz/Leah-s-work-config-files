@@ -1,4 +1,5 @@
-""""""""""""""""" "Leah's vimrc "October 16th, 2011 """""""""""""""""
+"Leah's vimrc 
+""October 16th, 2011 
 "General
 "
 vmap <C-c> y:call system("pbcopy", getreg("\""))<CR>
