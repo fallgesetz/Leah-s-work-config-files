@@ -1,7 +1,9 @@
 "Leah's vimrc 
-""October 16th, 2011 
+" 3-6-2012 @ climate 
 "General
 "
+
+" Mac copy and paste
 vmap <C-c> y:call system("pbcopy", getreg("\""))<CR>
 nmap <C-v> :call setreg("\"",system("pbpaste"))<CR>p
 
@@ -62,10 +64,6 @@ set laststatus=2
 "set spelllang=en 
 "set spellsuggest=9
 
-"Plugins 
-filetype plugin on
-filetype indent on
-
 "Python 
 "let python_highlight_builtin = 1
 
@@ -74,15 +72,33 @@ set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 
 "Package Management 
-call pathogen#runtime_append_all_bundles("vimpyre")
+" switch to Vundle
+" install with:  $ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+set nocompatible
+filetype off
 
-" Solarized
-" keep this after pathogen, because solarized requires pathogen
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+Bundle 'tpope/vim-fugitive'
+Bundle 'git://git.wincent.com/command-t.git'
+Bundle 'https://github.com/altercation/vim-colors-solarized.git'
+Bundle 'VimClojure'
+Bundle "tslime.vim"
+
+filetype plugin indent on
+
 color solarized
 
 "Vim-LaTeX
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_ViewRule_pdf='open -a Preview'
+
+"VimClojure
+let g:clj_highlight_builtins=1
+let g:clj_paren_rainbow=1
 
 """"""""""""
 " MAPPINGS "
