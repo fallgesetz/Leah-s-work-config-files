@@ -5,7 +5,7 @@
 
 " Mac copy and paste
 vmap <C-c> y:call system("pbcopy", getreg("\""))<CR>
-nmap <C-v> :call setreg("\"",system("pbpaste"))<CR>p
+nmap <C-p> :call setreg("\"",system("pbpaste"))<CR>p
 
 "virtualedit
 "cursor doesn't just snap to text
@@ -87,6 +87,8 @@ Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'https://github.com/altercation/vim-colors-solarized.git'
 Bundle 'VimClojure'
 Bundle "tslime.vim"
+Bundle 'Tagbar'
+Bundle 'scrooloose/nerdtree'
 
 filetype plugin indent on
 
@@ -97,8 +99,9 @@ let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_ViewRule_pdf='open -a Preview'
 
 "VimClojure
-let g:clj_highlight_builtins=1
-let g:clj_paren_rainbow=1
+
+let VimClojure#HighlightBuiltins=1
+let VimClojure#ParenRainbow=1
 
 """"""""""""
 " MAPPINGS "
