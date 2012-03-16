@@ -22,6 +22,7 @@ set hidden
 
 "no pinky jumps (default leader is \) 
 let mapleader = ","
+let maplocalleader = "\\"
 
 "want most completion options rather than let the dumb algorithm guess 
 set wildmode=list:longest
@@ -89,6 +90,8 @@ Bundle 'VimClojure'
 Bundle "tslime.vim"
 Bundle 'Tagbar'
 Bundle 'scrooloose/nerdtree'
+Bundle 'surround.vim'
+Bundle 'fugitive.vim'
 
 filetype plugin indent on
 
@@ -100,8 +103,18 @@ let g:Tex_ViewRule_pdf='open -a Preview'
 
 "VimClojure
 
-let VimClojure#HighlightBuiltins=1
-let VimClojure#ParenRainbow=1
+let vimclojure#HighlightBuiltins=1
+let vimclojure#ParenRainbow=1
+let vimclojure#DynamicHighlighting=1
+let vimclojure#WantNailGun=1
+let vimclojure#NailgunClient="/home/lxue/.clojure/ng"
+let vimclojure#FuzzyIndent=1
+nnoremap ,sr :call vimclojure#StartRepl()
+
+"Command-T
+let g:CommandTMaxFiles=100000
+let g:CommandTMaxDepth=30
+let g:CommandTMaxCachedDirectories=3
 
 """"""""""""
 " MAPPINGS "
