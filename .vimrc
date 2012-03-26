@@ -3,6 +3,11 @@
 "General
 "
 
+"Gui
+if has('gui_running')
+	set guifont=Monospace:12
+endif
+
 " Mac copy and paste
 vmap <C-c> y:call system("pbcopy", getreg("\""))<CR>
 nmap <C-p> :call setreg("\"",system("pbpaste"))<CR>p
@@ -10,7 +15,6 @@ nmap <C-p> :call setreg("\"",system("pbpaste"))<CR>p
 "virtualedit
 "cursor doesn't just snap to text
 set virtualedit=all
-
 set showmode
 
 "use  per-directory exuberant ctags
@@ -86,35 +90,48 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'https://github.com/altercation/vim-colors-solarized.git'
-Bundle 'VimClojure'
 Bundle "tslime.vim"
 Bundle 'Tagbar'
+Bundle 'vimclojure-2.3.1'
 Bundle 'scrooloose/nerdtree'
 Bundle 'surround.vim'
 Bundle 'fugitive.vim'
+Bundle 'ack.vim'
+Bundle 'ervandew/screen'
+Bundle 'trailing-whitespace'
+Bundle 'bufexplorer.zip'
 
 filetype plugin indent on
 
 color solarized
+"NERDTree
+nnoremap <silent> <F2> :NERDTreeToggle<CR>
+nnoremap <leader>r :NERDTreeFind<CR>
 
 "Vim-LaTeX
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_ViewRule_pdf='open -a Preview'
 
-"VimClojure
+"ScreenShell
 
-let vimclojure#HighlightBuiltins=1
-let vimclojure#ParenRainbow=1
-let vimclojure#DynamicHighlighting=1
-let vimclojure#WantNailGun=1
-let vimclojure#NailgunClient="/home/lxue/.clojure/ng"
-let vimclojure#FuzzyIndent=1
-nnoremap ,sr :call vimclojure#StartRepl()
+nnoremap <C-c><C-c> :ScreenShell<cr>
+vnoremap <C-c><C-c> :ScreenSend<cr>
+nnoremap <C-c><C-x> :ScreenQuit<cr>
 
 "Command-T
 let g:CommandTMaxFiles=100000
 let g:CommandTMaxDepth=30
 let g:CommandTMaxCachedDirectories=3
+
+"Ack-grep
+let g:ackprg="ack-grep"
+
+"VimClojure
+let vimclojure#HighlightBuiltins=1
+let vimclojure#HighlightContrib=1
+let vimclojure#DynamicHighlighting=1
+let vimclojure#ParenRainbow=1
+let vimclojure#WantNailgun = 1
 
 """"""""""""
 " MAPPINGS "
@@ -137,8 +154,6 @@ nnoremap <silent> <F3> :set hlsearch!<CR>
 "Tagbar 
 nnoremap <silent> <F8> :TagbarToggle<CR>
 
-"NERDTree
-nnoremap <silent> <F2> :NERDTreeToggle<CR>
 
 "vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -154,12 +169,15 @@ nnoremap <silent> <S-F12> :bp<CR>
 """"""""""""""""""""
 " FILETYPE COMMANDS"
 """"""""""""""""""""
+augroup filetypeindent
+    autocmd!
+    autocmd BufRead, BufNewFile *.sage, *.pyx, *.spyx set filetype=python
+augroup END
 
 augroup indent_rules
     "clear autocmds in group on reload
     autocmd! 
     autocmd FileType python setlocal ai tabstop=4 expandtab shiftwidth=4 backspace=indent
+    autocmd FileType clojure setlocal expandtab ai tabstop=2 shiftwidth=2 softtabstop=2
     autocmd Filetype c setlocal tabstop=4 shiftwidth=4 expandtab cindent
 augroup END
-
-
