@@ -39,11 +39,11 @@ set hlsearch
 set incsearch
 
 "ack is prettier
-set grepprg=ack
+set grepprg=ack-grep
 
 "General aesthetics
 
-set background=dark	
+set background=dark
 set guifont=Monaco:h18
 let g:solarized_termcolors=16
 
@@ -61,16 +61,15 @@ set ofu=syntaxcomplete#Complete
 
 "Informative status line(copied) 
 "from Derek Wyatt's blog
-set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
+"set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]\ %y
 set laststatus=2
+set showmode
 
-"Spellchecking 
-"set spell 
-"set spelllang=en 
-"set spellsuggest=9
-
-"Python 
-"let python_highlight_builtin = 1
+"Window movement keys
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 "LaTeX 
 set grepprg=grep\ -nH\ $* 
@@ -100,6 +99,9 @@ Bundle 'ack.vim'
 Bundle 'ervandew/screen'
 Bundle 'trailing-whitespace'
 Bundle 'bufexplorer.zip'
+Bundle 'kevinstreit/VIM-Haskell'
+Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/vim-statline'
 
 filetype plugin indent on
 
@@ -119,8 +121,8 @@ vnoremap <C-c><C-c> :ScreenSend<cr>
 nnoremap <C-c><C-x> :ScreenQuit<cr>
 
 "Command-T
-let g:CommandTMaxFiles=100000
-let g:CommandTMaxDepth=30
+let g:CommandTMaxFiles=10000
+let g:CommandTMaxDepth=10
 let g:CommandTMaxCachedDirectories=3
 
 "Ack-grep
@@ -128,10 +130,14 @@ let g:ackprg="ack-grep"
 
 "VimClojure
 let vimclojure#HighlightBuiltins=1
+let vimclojure#FuzzyIndent=1
 let vimclojure#HighlightContrib=1
 let vimclojure#DynamicHighlighting=1
 let vimclojure#ParenRainbow=1
 let vimclojure#WantNailgun = 1
+
+"statline
+let g:statline_fugitive=1
 
 """"""""""""
 " MAPPINGS "
