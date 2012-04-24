@@ -102,6 +102,10 @@ Bundle 'bufexplorer.zip'
 Bundle 'kevinstreit/VIM-Haskell'
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/vim-statline'
+Bundle 'micheljansen/vim-latex'
+Bundle 'snipMate'
+Bundle 'klen/python-mode'
+
 
 filetype plugin indent on
 
@@ -139,6 +143,9 @@ let vimclojure#WantNailgun = 1
 "statline
 let g:statline_fugitive=1
 
+"klen/python-mode
+let g:pymode_folding=0
+
 """"""""""""
 " MAPPINGS "
 """"""""""""
@@ -171,6 +178,12 @@ inoremap jj <esc>
 "Buffer Navigation
 nnoremap <silent> <F12> :bn<CR>
 nnoremap <silent> <S-F12> :bp<CR>
+
+"Window navigation
+noremap <silent> <C-h> :wincmd h<CR>
+noremap <silent> <C-l> :wincmd l<CR>
+noremap <silent> <C-j> :wincmd j<CR>
+noremap <silent> <C-k> :wincmd k<CR>
 
 """"""""""""""""""""
 " FILETYPE COMMANDS"
