@@ -146,9 +146,21 @@ let g:statline_fugitive=1
 "klen/python-mode
 let g:pymode_folding=0
 
+""""""""""""""""""""
+" Custom Functions "
+""""""""""""""""""""
+
+function! InsertPdbPython()
+	let trace = expand("import pdb; pdb.set_trace()")
+	execute "normal o".trace
+endfunction
+
+
 """"""""""""
 " MAPPINGS "
 """"""""""""
+
+nnoremap <leader>p :call InsertPdbPython()<CR>
 
 "arrow keys - don't cheat
 nnoremap <up> <nop>
