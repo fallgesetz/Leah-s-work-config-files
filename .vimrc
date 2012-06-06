@@ -1,5 +1,4 @@
 "Leah's vimrc 
-" 3-6-2012 @ climate 
 "General
 "
 

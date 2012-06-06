@@ -1,1 +1,0 @@
-/home/lxue/.emacs.d
