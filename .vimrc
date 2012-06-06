@@ -86,7 +86,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'tpope/vim-fugitive'
-Bundle 'git://git.wincent.com/command-t.git'
+Bundle 'wincent/Command-T'
 Bundle 'https://github.com/altercation/vim-colors-solarized.git'
 Bundle "tslime.vim"
 Bundle 'Tagbar'
