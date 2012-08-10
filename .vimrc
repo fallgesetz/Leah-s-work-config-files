@@ -1,15 +1,17 @@
 "Leah's vimrc 
 "General
 "
+" Useful Resources:
+" http://zmievski.org/files/talks/codeworks-2009/vim-for-php-programmers.pdf
 
 "Gui
 if has('gui_running')
 	set guifont=Monospace:12
 endif
 
-" Mac copy and paste
-vmap <C-c> y:call system("pbcopy", getreg("\""))<CR>
-nmap <C-p> :call setreg("\"",system("pbpaste"))<CR>p
+" Many a man fails as an original thinker simply because his memory is too good. -Nietzsche
+"you know, command line history
+set history=1000
 
 "virtualedit
 "cursor doesn't just snap to text
@@ -36,6 +38,7 @@ set title
 "search options 
 set hlsearch 
 set incsearch
+set wrapscan "wrap around search
 
 "ack is prettier
 set grepprg=ack-grep
@@ -95,7 +98,6 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'surround.vim'
 Bundle 'fugitive.vim'
 Bundle 'ack.vim'
-Bundle 'ervandew/screen'
 Bundle 'trailing-whitespace'
 Bundle 'bufexplorer.zip'
 Bundle 'kevinstreit/VIM-Haskell'
@@ -103,8 +105,8 @@ Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/vim-statline'
 Bundle 'micheljansen/vim-latex'
 Bundle 'snipMate'
-Bundle 'klen/python-mode'
-
+Bundle 'cscope.vim'
+Bundle 'Conque-Shell'
 
 filetype plugin indent on
 
@@ -117,11 +119,11 @@ nnoremap <leader>r :NERDTreeFind<CR>
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_ViewRule_pdf='open -a Preview'
 
-"ScreenShell
+" Conqueterm
+" http://code.google.com/p/conque/wiki/Usage
+let g:ConqueTerm_color = 1
+let g:ConqueTerm_InsertOnEnter = 1
 
-nnoremap <C-c><C-c> :ScreenShell<cr>
-vnoremap <C-c><C-c> :ScreenSend<cr>
-nnoremap <C-c><C-x> :ScreenQuit<cr>
 
 "Command-T
 let g:CommandTMaxFiles=10000
@@ -154,12 +156,17 @@ function! InsertPdbPython()
 	execute "normal o".trace
 endfunction
 
+function! InsertHphpBreak()
+	let trace = expand("hphpd_break();")
+	execute "normal o".trace
+endfunction
 
 """"""""""""
 " MAPPINGS "
 """"""""""""
 
 nnoremap <leader>p :call InsertPdbPython()<CR>
+nnoremap <leader>pb :call InsertHphpBreak()<CR>
 
 "arrow keys - don't cheat
 nnoremap <up> <nop>
@@ -210,4 +217,23 @@ augroup indent_rules
     autocmd FileType python setlocal ai tabstop=4 expandtab shiftwidth=4 backspace=indent
     autocmd FileType clojure setlocal expandtab ai tabstop=2 shiftwidth=2 softtabstop=2
     autocmd Filetype c setlocal tabstop=4 shiftwidth=4 expandtab cindent
+    autocmd Filetype php setlocal shiftwidth=2 expandtab tabstop=2 softtabstop=2 cindent
 augroup END
+
+""""""""""""""""""
+" Facebook Stuff " 
+" """"""""""""""""
+
+source /home/engshare/admin/scripts/vim/biggrep.vim
+  augroup filetypedetect
+  au! BufRead,BufNewFile *.phpt setfiletype php
+augroup END
+
+map <C-c><C-c> :exe ":cs find c " . expand("<cword>") 
+map <C-c><C-g> :exe ":cs find g " . expand("<cword>") 
+map <C-c><C-d> :exe ":cs find d " . expand("<cword>") 
+map <C-c><C-e> :exe ":cs find e (^\|[^a-zA-Z_])" . expand("<cword>") . "([^a-zA-Z_]\|$)" 
+map <C-c><C-a> :exe ":cs find e function " . expand("<cword>") . "([^a-zA-Z_]\|$)" 
+map <C-c><C-b> :exe ":cs find s " . expand("<cword>") 
+map <C-c><C-f> :cs find f 
+map <C-c><C-t> :exe ":cs find t " . expand("<cword>")
