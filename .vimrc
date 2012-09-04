@@ -3,6 +3,8 @@
 "
 " Useful Resources:
 " http://zmievski.org/files/talks/codeworks-2009/vim-for-php-programmers.pdf
+" Derek Wyatt's vimrc
+" https://github.com/derekwyatt/vim-config/blob/master/vimrc
 
 "Gui
 if has('gui_running')
@@ -19,7 +21,7 @@ set virtualedit=all
 set showmode
 
 "use  per-directory exuberant ctags
-set tags=tags;/
+set tags=./tags;/
 
 "current buffer can be put to background without writing to disk 
 "marks and undos are remembered when a background process is foregrounded 
@@ -47,7 +49,7 @@ set grepprg=ack-grep
 
 set background=dark
 set guifont=Monaco:h18
-let g:solarized_termcolors=16
+let g:solarized_termcolors=16 "need this for something?
 
 set number 
 syntax enable
@@ -57,6 +59,8 @@ syntax enable
 set textwidth=80 
 set wrap linebreak textwidth=0
 
+"backspace
+set backspace=2
 
 "Omnicompletion
 set ofu=syntaxcomplete#Complete
@@ -93,7 +97,6 @@ Bundle 'wincent/Command-T'
 Bundle 'https://github.com/altercation/vim-colors-solarized.git'
 Bundle "tslime.vim"
 Bundle 'Tagbar'
-Bundle 'vimclojure-2.3.1'
 Bundle 'scrooloose/nerdtree'
 Bundle 'surround.vim'
 Bundle 'fugitive.vim'
@@ -105,8 +108,8 @@ Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/vim-statline'
 Bundle 'micheljansen/vim-latex'
 Bundle 'snipMate'
-Bundle 'cscope.vim'
 Bundle 'Conque-Shell'
+Bundle 'syntastic'
 
 filetype plugin indent on
 
@@ -114,6 +117,7 @@ color solarized
 "NERDTree
 nnoremap <silent> <F2> :NERDTreeToggle<CR>
 nnoremap <leader>r :NERDTreeFind<CR>
+let g:NERDTreeDirArrows=0
 
 "Vim-LaTeX
 let g:Tex_DefaultTargetFormat='pdf'
@@ -193,10 +197,6 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 "esc
 inoremap jj <esc>
 
-"Buffer Navigation
-nnoremap <silent> <F12> :bn<CR>
-nnoremap <silent> <S-F12> :bp<CR>
-
 "Window navigation
 noremap <silent> <C-h> :wincmd h<CR>
 noremap <silent> <C-l> :wincmd l<CR>
@@ -228,12 +228,3 @@ source /home/engshare/admin/scripts/vim/biggrep.vim
   augroup filetypedetect
   au! BufRead,BufNewFile *.phpt setfiletype php
 augroup END
-
-map <C-c><C-c> :exe ":cs find c " . expand("<cword>") 
-map <C-c><C-g> :exe ":cs find g " . expand("<cword>") 
-map <C-c><C-d> :exe ":cs find d " . expand("<cword>") 
-map <C-c><C-e> :exe ":cs find e (^\|[^a-zA-Z_])" . expand("<cword>") . "([^a-zA-Z_]\|$)" 
-map <C-c><C-a> :exe ":cs find e function " . expand("<cword>") . "([^a-zA-Z_]\|$)" 
-map <C-c><C-b> :exe ":cs find s " . expand("<cword>") 
-map <C-c><C-f> :cs find f 
-map <C-c><C-t> :exe ":cs find t " . expand("<cword>")
