@@ -109,7 +109,7 @@ Bundle 'scrooloose/vim-statline'
 Bundle 'micheljansen/vim-latex'
 Bundle 'snipMate'
 Bundle 'Conque-Shell'
-Bundle 'syntastic'
+Bundle 'scrooloose/nerdcommenter'
 
 filetype plugin indent on
 
