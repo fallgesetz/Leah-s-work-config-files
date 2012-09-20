@@ -11,6 +11,9 @@ if has('gui_running')
 	set guifont=Monospace:12
 endif
 
+"enable mouse
+set mouse=a
+
 " Many a man fails as an original thinker simply because his memory is too good. -Nietzsche
 "you know, command line history
 set history=1000
@@ -56,7 +59,7 @@ syntax enable
 
 "WOOOOOO, PUNCH CARDS
 "annoying, breaks python - 06/29/2011
-set textwidth=80 
+set textwidth=80
 set wrap linebreak textwidth=0
 
 "backspace
@@ -67,9 +70,9 @@ set ofu=syntaxcomplete#Complete
 
 "Informative status line(copied) 
 "from Derek Wyatt's blog
-"set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]\ %y
-set laststatus=2
-set showmode
+set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]\ %y
+" set laststatus=2
+" set showmode
 
 "Window movement keys
 nnoremap <C-h> <C-w>h
@@ -110,6 +113,7 @@ Bundle 'micheljansen/vim-latex'
 Bundle 'snipMate'
 Bundle 'Conque-Shell'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'vim-flake8'
 
 filetype plugin indent on
 
