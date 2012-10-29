@@ -106,7 +106,6 @@ Bundle 'fugitive.vim'
 Bundle 'ack.vim'
 Bundle 'trailing-whitespace'
 Bundle 'bufexplorer.zip'
-Bundle 'kevinstreit/VIM-Haskell'
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/vim-statline'
 Bundle 'micheljansen/vim-latex'
@@ -114,6 +113,7 @@ Bundle 'snipMate'
 Bundle 'Conque-Shell'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-flake8'
+Bundle 'lukerandall/haskellmode-vim'
 
 filetype plugin indent on
 
