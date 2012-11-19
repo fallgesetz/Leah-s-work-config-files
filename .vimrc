@@ -6,7 +6,7 @@
 " Derek Wyatt's vimrc
 " https://github.com/derekwyatt/vim-config/blob/master/vimrc
 
-set wildignore+=*/tmp*,*.so,*.swp,*.zip
+set wildignore+=*/tmp*,*.so,*.swp,*.zip,*.pyc,*.class
 
 "Gui
 if has('gui_running')
@@ -73,6 +73,21 @@ set backspace=2
 "Omnicompletion
 set ofu=syntaxcomplete#Complete
 
+"Emacs bindings for command line
+cmap <C-p> <Up>
+cmap <C-n> <Down>
+cmap <C-b> <Left>
+cmap <C-f> <Right>
+cmap <C-a> <Home>
+cmap <C-e> <End>
+cmap <M-b> <S-Left>
+cmap <M-f> <S-Right>
+cnoremap <C-d> <Del>
+cnoremap <C-h> <BS>
+cnoremap <M-d> <S-Right><C-w>
+cnoremap <M-h> <C-w>
+cnoremap <C-k> <C-f>D<C-c><C-c>:<Up>
+
 "Informative status line(copied) 
 "from Derek Wyatt's blog
 set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]\ %y
@@ -119,6 +134,7 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-flake8'
 Bundle 'lukerandall/haskellmode-vim'
 Bundle 'Command-T'
+Bundle 'ctrlp.vim'
 
 filetype plugin indent on
 
@@ -137,10 +153,23 @@ let g:Tex_ViewRule_pdf='open -a Preview'
 let g:ConqueTerm_color = 1
 let g:ConqueTerm_InsertOnEnter = 1
 
-"Command-T
-let g:CommandTMaxFiles=10000
-let g:CommandTMaxDepth=20
-let g:CommandTMaxCachedDirectories=1
+"ctrl-p
+let g:ctrlp_max_depth=20
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+" searching speed
+let g:ctrlp_max_files = 100000
+if has("unix")
+    let g:ctrlp_user_command = {
+                \   'types': {
+                \       1: ['.git/', 'cd %s && git ls-files']
+                \   },
+                \   'fallback': 'find %s -type f | head -' . g:ctrlp_max_files
+                \ }
+endif
 
 "Ack-grep
 let g:ackprg="ack-grep"
