@@ -6,6 +6,8 @@
 " Derek Wyatt's vimrc
 " https://github.com/derekwyatt/vim-config/blob/master/vimrc
 
+set wildignore+=*/tmp*,*.so,*.swp,*.zip
+
 "Gui
 if has('gui_running')
 	set guifont=Monospace:12
@@ -57,10 +59,13 @@ let g:solarized_termcolors=16 "need this for something?
 set number 
 syntax enable
 
-"WOOOOOO, PUNCH CARDS
-"annoying, breaks python - 06/29/2011
-set textwidth=80
-set wrap linebreak textwidth=0
+"highlight whenever line is over 80chars
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+
+"show tabs as errors
+syn match tab display "\t"
+hi link tab Error"
 
 "backspace
 set backspace=2
@@ -96,7 +101,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'tpope/vim-fugitive'
-Bundle 'wincent/Command-T'
 Bundle 'https://github.com/altercation/vim-colors-solarized.git'
 Bundle "tslime.vim"
 Bundle 'Tagbar'
@@ -114,6 +118,7 @@ Bundle 'Conque-Shell'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-flake8'
 Bundle 'lukerandall/haskellmode-vim'
+Bundle 'Command-T'
 
 filetype plugin indent on
 
@@ -132,11 +137,10 @@ let g:Tex_ViewRule_pdf='open -a Preview'
 let g:ConqueTerm_color = 1
 let g:ConqueTerm_InsertOnEnter = 1
 
-
 "Command-T
 let g:CommandTMaxFiles=10000
-let g:CommandTMaxDepth=10
-let g:CommandTMaxCachedDirectories=3
+let g:CommandTMaxDepth=20
+let g:CommandTMaxCachedDirectories=1
 
 "Ack-grep
 let g:ackprg="ack-grep"
@@ -221,7 +225,7 @@ augroup indent_rules
     autocmd FileType python setlocal ai tabstop=4 expandtab shiftwidth=4 backspace=indent
     autocmd FileType clojure setlocal expandtab ai tabstop=2 shiftwidth=2 softtabstop=2
     autocmd Filetype c setlocal tabstop=4 shiftwidth=4 expandtab cindent
-    autocmd Filetype php setlocal shiftwidth=2 expandtab tabstop=2 softtabstop=2 cindent
+    autocmd Filetype php setlocal shiftwidth=2 expandtab tabstop=2 softtabstop=2 autoindent
 augroup END
 
 """"""""""""""""""
