@@ -132,13 +132,16 @@ Bundle 'snipMate'
 Bundle 'Conque-Shell'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-flake8'
-Bundle 'lukerandall/haskellmode-vim'
-Bundle 'Command-T'
 Bundle 'ctrlp.vim'
 
 filetype plugin indent on
 
 color solarized
+
+"Haskell-mode
+let g:haddock_browser = "open"
+let g:haddock_browser_callformat = "%s %s"
+
 "NERDTree
 nnoremap <silent> <F2> :NERDTreeToggle<CR>
 nnoremap <leader>r :NERDTreeFind<CR>
@@ -255,6 +258,7 @@ augroup indent_rules
     autocmd FileType clojure setlocal expandtab ai tabstop=2 shiftwidth=2 softtabstop=2
     autocmd Filetype c setlocal tabstop=4 shiftwidth=4 expandtab cindent
     autocmd Filetype php setlocal shiftwidth=2 expandtab tabstop=2 softtabstop=2 autoindent
+<<<<<<< HEAD
 augroup END
 
 """"""""""""""""""
@@ -264,4 +268,7 @@ augroup END
 source /home/engshare/admin/scripts/vim/biggrep.vim
   augroup filetypedetect
   au! BufRead,BufNewFile *.phpt setfiletype php
+=======
+    autocmd Filetype java setlocal shiftwidth=2 expandtab tabstop=2 softtabstop=2 autoindent
+>>>>>>> switch to ctrlp
 augroup END
