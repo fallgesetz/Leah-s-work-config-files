@@ -121,7 +121,6 @@ Bundle "tslime.vim"
 Bundle 'Tagbar'
 Bundle 'scrooloose/nerdtree'
 Bundle 'surround.vim'
-Bundle 'fugitive.vim'
 Bundle 'ack.vim'
 Bundle 'trailing-whitespace'
 Bundle 'bufexplorer.zip'
@@ -133,10 +132,22 @@ Bundle 'Conque-Shell'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-flake8'
 Bundle 'ctrlp.vim'
+Bundle 'pangloss/vim-javascript'
+Bundle 'tpope/vim-eunuch'
+Bundle 'Better-CSS-Syntax-for-Vim'
+Bundle 'neocomplcache'
+Bundle 'EasyMotion'
+Bundle 'Superior-Haskell-Interaction-Mode-SHIM'
+Bundle 'AutoClose'
 
 filetype plugin indent on
 
 color solarized
+
+"vim-javascript
+let g:html_indent_inctags = "html,body,head,tbody"
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
 
 "Haskell-mode
 let g:haddock_browser = "open"
