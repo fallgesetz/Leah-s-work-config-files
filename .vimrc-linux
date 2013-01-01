@@ -158,10 +158,6 @@ nnoremap <silent> <F2> :NERDTreeToggle<CR>
 nnoremap <leader>r :NERDTreeFind<CR>
 let g:NERDTreeDirArrows=0
 
-"Vim-LaTeX
-let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_ViewRule_pdf='open -a Preview'
-
 " Conqueterm
 " http://code.google.com/p/conque/wiki/Usage
 let g:ConqueTerm_color = 1
@@ -271,12 +267,3 @@ augroup indent_rules
     autocmd Filetype php setlocal shiftwidth=2 expandtab tabstop=2 softtabstop=2 autoindent
 augroup END
 
-""""""""""""""""""
-" Facebook Stuff " 
-" """"""""""""""""
-
-source /home/engshare/admin/scripts/vim/biggrep.vim
-augroup filetypedetect
-  au! BufRead,BufNewFile *.phpt setfiletype php
-    autocmd Filetype java setlocal shiftwidth=2 expandtab tabstop=2 softtabstop=2 autoindent
-augroup END
