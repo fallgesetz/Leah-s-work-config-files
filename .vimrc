@@ -138,6 +138,7 @@ Bundle 'Better-CSS-Syntax-for-Vim'
 Bundle 'neocomplcache'
 Bundle 'EasyMotion'
 Bundle 'Superior-Haskell-Interaction-Mode-SHIM'
+Bundle 'adimit/prolog.vim'
 
 filetype plugin indent on
 
