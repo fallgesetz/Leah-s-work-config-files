@@ -138,7 +138,6 @@ Bundle 'Better-CSS-Syntax-for-Vim'
 Bundle 'neocomplcache'
 Bundle 'EasyMotion'
 Bundle 'Superior-Haskell-Interaction-Mode-SHIM'
-Bundle 'AutoClose'
 
 filetype plugin indent on
 
@@ -269,6 +268,12 @@ augroup indent_rules
     autocmd FileType clojure setlocal expandtab ai tabstop=2 shiftwidth=2 softtabstop=2
     autocmd Filetype c setlocal tabstop=4 shiftwidth=4 expandtab cindent
     autocmd Filetype php setlocal shiftwidth=2 expandtab tabstop=2 softtabstop=2 autoindent
+augroup END
+
+augroup ext_rules
+    autocmd!
+    " prolog > perl. duh
+    autocmd FileType pl set syntax=prolog
 augroup END
 
 """"""""""""""""""
